@@ -35,10 +35,14 @@ def K(cx,cy,w,h,col):
 for i in range(5): K(int(150+random.random()*200),int(850+random.random()*100),int(15+random.random()*30),int(80+random.random()*200),random.choice(CC))
 for i in range(6): K(int(500+random.random()*250),int(820+random.random()*120),int(18+random.random()*35),int(100+random.random()*250),random.choice(CC))
 for i in range(4): K(int(280+random.random()*240),int(780+random.random()*80),int(10+random.random()*20),int(60+random.random()*150),random.choice(CC))
+# Extra crystals — small cluster
+for i in range(3): K(int(50+random.random()*100),int(900+random.random()*60),int(8+random.random()*12),int(40+random.random()*80),random.choice(CC))
 # Ground
 gp=[(0,H)]
 for x in range(0,W+1,5): gp.append((x,H-int(30+random.random()*40*math.sin(x/150))))
 gp.append((W,H)); d.polygon(gp,fill=(20,10,30))
+# Reflective glow on ground
+for x in range(W//4,3*W//4,4): d.line([(x,H-40),(x,H)],fill=(60,40,80,100)if hasattr(d,'RGBA')else(60,40,80))
 # Stars
 for _ in range(80):
     px=int(random.random()*W); py=int(random.random()*H*0.5)
